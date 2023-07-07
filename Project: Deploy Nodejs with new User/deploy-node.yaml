@@ -1,0 +1,49 @@
+---
+- name: Install node and npm
+  hosts: 164.92.161.141
+  tasks:
+    - name: Update apt repo and cache
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+    - name: Install nodejs and npm
+      apt:
+        pkg: 
+          - nodejs 
+          - npm
+        
+
+- name: Create new linux user for node app
+  hosts: 164.92.161.141    
+  vars_files:
+    - project-vars  
+  tasks:
+    - name: Create linux user
+      user:
+        name: farah
+        comment: farah admin
+        group: admin
+
+
+
+
+- name : Deploy nodejs app
+  hosts: 164.92.161.141
+  become: True
+  become_user: farah
+  tasks:    
+    - name : Unpack the nodejs file
+      unarchive: 
+          src: /Users/farahomar/Downloads/simple-nodejs-master/nodejs-app-1.0.0.tgz
+          dest: /home/farah
+    - name: Install dependencies
+      npm:
+        path: /home/farah/package/
+    - name: Start the application
+      command:
+        chdir: /home/farah/package/app
+        cmd: node server
+      async: 1000
+      poll: 0
+    - name: Ensure app is running
+      shell: ps aux | grep node
+      register: app_status
+    - debug: msg={{app_status.stdout_lines}}
