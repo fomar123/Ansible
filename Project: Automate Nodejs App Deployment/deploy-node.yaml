@@ -11,20 +11,6 @@
           - npm
         
 
-- name: Create new linux user for node app
-  hosts: 164.92.161.141    
-  vars_files:
-    - project-vars  
-  tasks:
-    - name: Create linux user
-      user:
-        name: farah
-        comment: farah admin
-        group: admin
-
-
-
-
 - name : Deploy nodejs app
   hosts: 164.92.161.141
   become: True
