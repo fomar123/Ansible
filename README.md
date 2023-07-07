@@ -42,4 +42,26 @@ Execute ansible playbook:
 To see if nginx is installed in remote server:
       ps aux | grep nginx
 
+##### 6.Project: Automate Node App Deployment 
+1.	Create a droplet in digital ocean
+
+2.	Adjusted hosts file
+
+3.	Install node and npm
+   
+4.	Copy and unpack  nodejs tar file 
+
+5.	Deploy nodejs app
+
+6.	Install dependencies
+
+7.	Execute command: 
+
+         Ansible-playbook -i hosts deploy-node.yaml
+  	
+8.	Ensure app is running using shell 
+
+           ps aux | grep node
+
+![image](https://github.com/fomar123/Ansible/assets/90075757/f74915fa-b404-40a8-9d2f-b490effdec45)
 
