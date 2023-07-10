@@ -1,0 +1,5 @@
+ version: 1.0.0 
+ location: /Users/farahomar/Downloads/simple-nodejs-master 
+ linux_name: farah 
+ usr_home_dir: /home/{{linux_name}}
+ docker_password: ""
