@@ -1,0 +1,2 @@
+docker_egistry: https://aws_account_id.dkr.ecr.region.amazon.aws.com
+docker_user: AWS
