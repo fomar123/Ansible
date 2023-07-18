@@ -367,9 +367,8 @@ Dynamic inventory is an ansible plugin that makes an API call to AWS to get the 
 
 ##### Complete Roles:
 
-•	Created folder “files” and created inside it  a docker-compose file  
+• Created folder “files” and created inside it  a docker-compose file  
 
-#####  add docker-compose
 
 ##### Customise Roles with Variables:
 
