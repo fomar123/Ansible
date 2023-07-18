@@ -186,3 +186,199 @@ Project: Deploy Nodejs with new user
 
 Results:
 ![image](https://github.com/fomar123/Ansible/assets/90075757/fe078e5f-536d-4045-b40e-5ff40c127d19)
+
+
+
+# Project: Ansible & Docker 
+
+##### Created EC2 Instance with Terraform
+
+##### Adjusted hosts inventory file
+
+##### Update IP address of Ec2 instance
+
+##### Installed python3 and docker:
+
+•	Use root user with become: yes
+
+•	Configure ansible interpreter to python3
+
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/36dc8049-d962-4c7a-96e0-2d621a73d1fe">
+
+##### Installed docker-compose
+
+•	Use “lookup” plugin to allow ansible access to docker-compose
+
+•	To install you need to be a root user , use become: yes
+
+##### Started docker daemon
+
+
+#####  Added ec2-user to docker group
+
+•	Ec2 user has to be in docker group to execute docker commands
+
+•	Pull redis image 
+
+##### Results:
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/d54bbc04-0aec-41fa-8ec9-7a863a15274a">
+
+##### Installed docker python module
+
+•	You need python module installed on remote to pull redis image
+
+•	Added task to install docker python module using pip
+
+#####  Test docker pull
+
+##### Result:
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/3ef7251c-8713-41b2-befb-664f0b209aec">
+
+##### Started docker containers:
+
+•	Copied docker compose file to ec2 server
+
+•	Fetched image from private repository in docker hub, made docker login module so you can pull the image
+
+•	Used variable prompt for docker hub password
+
+•	Started container from docker-compose and provided location of docker-compose
+
+##### Executed Playbook on new server
+
+##### Created new user and adjusted plays to make the playbook re-usable
+
+
+# Project: Ansible Integration in Terraform
+
+##### Adjusted Terraform configuration file to execute ansible playbook
+
+•	Added local provision in terraform configuration file because executing ansible commands locally 
+
+•	Changed hosts to “all”
+
+##### Created new Ansible Playbook for Terraform integration
+
+##### Waited for ssh connection:
+
+• Anisble needs to check first before ec2 is ready
+
+• Avoid timing issue , add a play to check if the server is accessible
+
+• Use module wait_for: this used to pause your playbook execution and to wait for many different things or conditions before continuing with the execution
+
+##### Used null_resource in Terraform configuration 
+
+• Null resource implements a standard resource lifecycle but takes no further action
+
+• Add triggers (maps of string) attribute tells terraform  when to run  null resource. (optional)
+
+
+
+# Dyamic  inventory
+
+Dynamic inventory is an ansible plugin that makes an API call to AWS to get the instance information in the run time. It gives you the ec2 instance details dynamically to manage the AWS infrastructure.
+
+##### Terraform - Created EC2 Instances: 
+• Installed python boto3 and botocore
+
+
+##### Written plugin configuration for aws_ec2
+
+• Enable aws_ec2 plugin
+
+• Excute command to list inventory:
+
+	ansible-inventory  -i nventory_aws_ec2.yaml  --list   
+
+##### Adjusted TF config for public DNS assignment
+
+• You get private DNS name if no public DNS is assigned
+
+• Enable DNS Hostnames
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/2decec5e-f34a-4244-b00f-f82cce89eb9a">
+
+
+##### Adjusted Ansible playbook and ansible.cfg to use dynamic hosts from AWS:
+
+• Changed host group name to aws_ec2
+
+• Globally configure username and private ssh key in ansible.cfg
+
+##### Added a 4th server and re-executed Ansible playbook
+
+##### Targeted only specific servers in your AWS region:
+
+• Created two prod servers and two dev servers
+
+• Used tags to group instances
+
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/6088a938-3854-4de7-b513-9881f98053e3">
+
+• Grouped server using instance types
+
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/4f4a095c-f664-4455-ae36-322aeea32b25">
+
+
+# Project: Automate Kubernetes Deployment
+
+##### Created K8s cluster using Terraform
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/70cf7b38-c5ab-4ff9-b61b-39ede00e5b0e">
+
+##### Deployed app in new namespace:
+
+• Created namespace in the EKS cluster
+
+• Connected to ansible using the cluster	
+
+##### Installed  openshift
+
+         pip3 install openshift –-user
+
+##### Installed PyYAML
+
+       pip3 install PyYaml –user
+
+##### Deployed nginc  app from Kubernetes configuration file
+
+##### Use K8S_AUTH_KUBECONFIG as environmental variable instead of using kubeconfig module for every task
+
+
+# Ansible Roles
+
+##### Created a folder for roles(inside the roles your going to have a folder for each role):
+
+• Inside each role you need to have a directory called tasks.
+
+• Create a main.yaml file in tasks 
+     
+#####  Used Roles in Playbook:
+
+• Reference roles inside playbook
+
+##### Created EC2 servers with Terraform
+
+• Deployed docker on ec2 using ansible
+
+##### Executed Ansible Playbook
+
+             ansible-playbook deploy-docker-with-roles.yaml -i inventory_aws_ec2.yaml
+
+
+##### Complete Roles:
+
+•	Created folder “files” and created inside it  a docker-compose file  
+
+#####  add docker-compose
+
+##### Customise Roles with Variables:
+
+• Create variables folder and define variable for docker login
+
+##### Created a default folder and main.yaml file for your default variable  - for yours users and logins details:
+
+• Default variables :  if user doesn’t set the variables the default value  variable will be used
+
+• It is recommended to set default values for variables to avoid undefined variable errors
+
+• Created variables for users because users maybe different in linux 
