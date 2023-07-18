@@ -43,25 +43,64 @@ To see if nginx is installed in remote server:
       ps aux | grep nginx
 
 ##### 6.Project: Automate Node App Deployment 
-1.	Create a droplet in digital ocean
+##### Create a droplet in digital ocean
 
-2.	Adjusted hosts file
+##### Adjusted hosts file
 
-3.	Install node and npm
+##### Install node and npm
    
-4.	Copy and unpack  nodejs tar file 
+##### Copy and unpack  nodejs tar file 
 
-5.	Deploy nodejs app
+##### Deploy nodejs app
 
-6.	Install dependencies
+##### Install dependencies
 
-7.	Execute command: 
+##### Execute command: 
 
          Ansible-playbook -i hosts deploy-node.yaml
-  	
-8.	Ensure app is running using shell 
+##### Ensure app is running using shell 
 
            ps aux | grep node
 
 ![image](https://github.com/fomar123/Ansible/assets/90075757/f74915fa-b404-40a8-9d2f-b490effdec45)
+
+# Project: Automate Node App Deployment 
+
+##### Created  a droplet in digital ocean
+
+##### Adjusted hosts file
+
+##### Installed node and npm
+
+##### Copied and unpacked nodejs tar file
+
+##### Deplpyed nodejs app
+
+##### Installed dependencies 
+
+##### Execute command:
+
+       Ansible-playbook -i hosts deploy-node.yaml
+
+##### Ensure app is running using shelled:
+
+      ps aux | grep node 
+
+Results:
+
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/bbba90b8-239f-48f5-b1a7-976c851f2d98">
+
+Project: Deploy Nodejs with new user 
+
+##### Created  new a new user:
+•	Change destination of nodejs file to new user 
+
+•	Set user with desired privileges using become_user
+
+•	Used the new user to deploy nodejs
+
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/9ff8b57f-ed4a-40fa-875d-5b7e36cd02be">
+
+
+
 
