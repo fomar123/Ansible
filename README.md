@@ -103,4 +103,64 @@ Project: Deploy Nodejs with new user
 
 
 
+# Project: Automate Nexus Deployment 
 
+##### Created DigitalOcean Droplet
+
+##### Changed IP address in  hosts file
+
+##### Installed java and net-tools in playbook 
+
+##### Downloaded and unpacked Nexus installer
+
+##### Execute playbook:
+
+      ansible-playbook -i hosts deploy-nexus.yaml
+
+##### ssh in to server to see if java and nexus was installed: 
+
+          ssh root@”ip-address"
+
+#####  ls /opt/ - to see if nexus was installed
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/7f5d5837-68c5-4920-b727-7a3984d6739c">
+
+
+
+##### Java –version: To check which Java version is installed
+
+##### Netstat --version: To check which Netstat version is installed
+
+##### Untard nexus installer
+
+##### Debugged to get complete name of the file
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/470d0a10-e7de-4d4f-8749-2ba6d233adfc">
+
+##### Downloaded nexus module from the untar nexus installer module
+<img width="401" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/9d4e1e33-0582-47e5-afaf-fea13ea29bbc">
+
+##### Note: Remote absolute path where the file should be copied to
+
+##### Rename nexus foler , first you need to find the folder 
+
+          debug: msg={{find_result}}
+<img width="283" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/d5de452a-a96d-4bd4-a153-7698bfb208f7">
+
+##### Rename nexus folder
+<img width="349" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/7328dcc8-2cdf-4f85-98c9-5f5a42683779">
+
+##### Result:
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/978b7865-b774-400c-a93b-dc997b339c8b">
+
+##### Use stat module to see if file exists
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/b51339b4-641b-4d22-8462-2ebe1a06ad73">
+
+
+##### Result:
+<img width="264" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/db089484-7f3e-41c6-a743-a14fb6f4090a">
+
+
+##### Use Conditional to execute folder only if  doesn’t exist
+<img width="495" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/b3af76d8-b2a1-49a7-a07f-8352f6323312">
+
+##### Result:
+<img width="296" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/b4b7b7b9-f170-4b55-a39b-b184cbd20e25">
