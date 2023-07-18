@@ -64,7 +64,7 @@ To see if nginx is installed in remote server:
 
 ![image](https://github.com/fomar123/Ansible/assets/90075757/f74915fa-b404-40a8-9d2f-b490effdec45)
 
-# Project: Automate Node App Deployment 
+# Project: Automate Node App Deployment Part 1
 
 ##### Created  a droplet in digital ocean
 
@@ -164,3 +164,25 @@ Project: Deploy Nodejs with new user
 
 ##### Result:
 <img width="296" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/b4b7b7b9-f170-4b55-a39b-b184cbd20e25">
+
+# Project: Automate Nexus Deployment Part 2
+
+##### Created nexus user to own nexus folders
+
+##### Results:
+    
+         ls -l /opt
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/afe84fa3-607f-4496-b3cf-c13dffcafd5d">
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/52b358c7-ab0f-4e30-b33d-bee2fa12a008">
+
+##### Start nexus with nexus user
+
+##### Result: 
+
+      vim /opt/nexus/bin/nexus.rc
+<img width="308" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/4f327e07-40a4-44dc-b12a-ede122cbac20">
+
+##### Verify nexus running
+
+Results:
+![image](https://github.com/fomar123/Ansible/assets/90075757/fe078e5f-536d-4045-b40e-5ff40c127d19)
