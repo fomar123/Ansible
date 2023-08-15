@@ -344,6 +344,40 @@ Dynamic inventory is an ansible plugin that makes an API call to AWS to get the 
 ##### Use K8S_AUTH_KUBECONFIG as environmental variable instead of using kubeconfig module for every task
 
 
+# Project: Ansible Integration in Jenkins 
+
+###### Created Droplet in Digital Ocean for Ansible Server 
+###### Install ansible on remote server:
+             apt update
+             apt install ansible 
+###### Install python module on Ansible server 
+           apt install python3-pip
+           pip3 install boto3 botocore
+
+##### Configure aws credentials in server:
+- create a directorty for aws: mkdir .aws
+- create a file for the credentials: vim credentials
+- copy your aws credentials from you local server to the ansible server
+
+##### Created 2 EC2 Instances for Ansible Managed Nodes
+##### Configured Credentials for DO Droplet (Private Key for Ansible Server & EC2 Managed Servers)
+- add credentials called SSH username with private key for ansible server – this will connect to the ansible server from jenkins
+- convert ssh key so it compatible for Jenkins – the private key with the new ssh format will be converted to the classic open ssh format:
+  
+                     ssh-keygen -p -f .ssh/id_rsa -m pem -P "" -N ""\
+- create credentials for ec2 server in Jenkins – this is used to copy the contents to ansible  server 
+- install ssh pipeline steps plugin that enables to Jenkins to execute a command on ansible server 
+##### Written Jenkinsfile
+
+##### ls -l command executed in Jenkins:
+
+<img width="323" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/a1cc1b11-2326-43c3-9fe1-4f1e4f5b3d70">
+
+<img width="304" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/c5c6c7c2-446d-4ba4-9014-9a52efae2157">
+
+#####  Execute ansible playbook commands on the remote server:
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/7d009863-7b5b-406a-ad62-018b76b4e74c">
+
 # Ansible Roles
 
 ##### Created a folder for roles(inside the roles your going to have a folder for each role):
