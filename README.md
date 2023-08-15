@@ -185,9 +185,11 @@ Project: Deploy Nodejs with new user
 ##### Verify nexus running
 
 Results:
-![image](https://github.com/fomar123/Ansible/assets/90075757/fe078e5f-536d-4045-b40e-5ff40c127d19)
 
+<img width="452" alt="image" src="https://github.com/fomar123/Ansible/assets/90075757/be1d1f67-3fcf-40e5-9fde-85361bac2b74">
 
+##### To check is installed in command line:
+                   Ps aux | grep nexus
 
 # Project: Ansible & Docker 
 
