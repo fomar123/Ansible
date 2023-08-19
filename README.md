@@ -1,4 +1,4 @@
-##### Ansible Inventory
+# Ansible Inventory
 Create Anisble inventory file:
 
 Connect anisble to remote servers on digital ocean:
@@ -34,7 +34,7 @@ Connect to droplet server:
 ![image](https://github.com/fomar123/Ansible/assets/90075757/1116433a-3e92-4664-8b29-c54c4ef0d24e)
 
 
-##### Introduction to playbooks:
+# Introduction to playbooks:
 Install nginx on playbook
 
 Execute ansible playbook:
